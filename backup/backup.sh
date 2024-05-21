@@ -8,7 +8,7 @@ dd if=/dev/sda2 of=/tmp/$HOSTNAME-sda2.img
 rm /tmp/$HOSTNAME-sda*
 lvcreate -L 1G -s -n snap /dev/pve/root
 sleep 5s
-dd if=/dev/mapper/pve-snap | gzip -c > /mnt/pve/ds1515-backups/nodes/$HOSTNAME-snapshot_$(date +%F).img.gz
+dd if=/dev/mapper/pve-snap bs=256M | 7zz a -si /mnt/pve/ds1515-backups/nodes/$HOSTNAME-snapshot_$(date +%F).img.7z
 sleep 5s
 lvremove --yes /dev/pve/snap
 find /mnt/pve/ds1515-backups/nodes/$HOSTNAME-*.7z -mtime +28 -type f -delete
