@@ -1,3 +1,4 @@
+#!/bin/bash
 apt update
 apt install fancontrol lm-sensors
 sensors -v
